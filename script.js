@@ -21,36 +21,96 @@ function el(tag, attrs = {}, children = []) {
   return node;
 }
 
-function renderProjects() {
-  const grid = document.getElementById("projectsGrid");
-  if (!grid) return;
+function renderAssignmentTabs() {
+  const tabs = document.getElementById("assignmentsTabs");
+  const panel = document.getElementById("assignmentPanel");
+  if (!tabs || !panel) return;
 
-  grid.replaceChildren();
+  tabs.replaceChildren();
+  panel.replaceChildren();
 
-  assignments.forEach((p) => {
-    const title = el("h3", { text: p.title });
+  tabs.setAttribute("role", "tablist");
+
+  const tabButtons = assignments.map((a, idx) => {
+    const btn = el("button", {
+      type: "button",
+      className: "tab",
+      id: `tab-assignment-${idx + 1}`,
+      role: "tab",
+      "aria-selected": "false",
+      "aria-controls": `panel-assignment-${idx + 1}`,
+      tabindex: "-1",
+      text: `A${idx + 1}`,
+    });
+
+    btn.addEventListener("click", () => setActive(idx, true));
+    return btn;
+  });
+
+  tabButtons.forEach((b) => tabs.append(b));
+
+  const panelInner = el("div", { id: "panelInner" });
+  panel.append(panelInner);
+  panel.setAttribute("role", "tabpanel");
+  panel.setAttribute("tabindex", "0");
+
+  function setActive(index, focusTab) {
+    const safeIndex = Math.max(0, Math.min(assignments.length - 1, index));
+
+    tabButtons.forEach((b, i) => {
+      const isActive = i === safeIndex;
+      b.classList.toggle("is-active", isActive);
+      b.setAttribute("aria-selected", String(isActive));
+      b.setAttribute("tabindex", isActive ? "0" : "-1");
+    });
+
+    const a = assignments[safeIndex];
+    const heading = el("h3", { className: "h3", text: a.title });
 
     const tagRow = el(
       "div",
       { className: "tagrow" },
-      (p.tags ?? []).map((t) => el("span", { className: "tag", text: t }))
+      (a.tags ?? []).map((t) => el("span", { className: "tag", text: t }))
     );
 
-    const top = el("div", { className: "card__top" }, [el("div", {}, [title, tagRow])]);
-
-    const desc = el("p", { className: "card__desc", text: p.description });
+    const desc = el("p", { className: "card__desc", text: a.description });
 
     const links = el("div", { className: "card__links" });
-    if (p.liveUrl) {
-      links.append(el("a", { href: p.liveUrl, target: "_blank", rel: "noreferrer", text: "Live" }));
+    if (a.liveUrl) {
+      links.append(el("a", { href: a.liveUrl, target: "_blank", rel: "noreferrer", text: "Open" }));
     }
-    if (p.repoUrl) {
-      links.append(el("a", { href: p.repoUrl, target: "_blank", rel: "noreferrer", text: "Code" }));
+    if (a.repoUrl) {
+      links.append(el("a", { href: a.repoUrl, target: "_blank", rel: "noreferrer", text: "Code" }));
+    }
+    if (!a.liveUrl && !a.repoUrl) {
+      links.append(el("span", { className: "muted", text: "Links coming soon." }));
     }
 
-    const card = el("article", { className: "card" }, [top, desc, links]);
-    grid.append(card);
+    panelInner.replaceChildren(heading, tagRow, desc, links);
+    panel.setAttribute("aria-labelledby", tabButtons[safeIndex].id);
+    panel.id = `panel-assignment-${safeIndex + 1}`;
+
+    if (focusTab) tabButtons[safeIndex].focus();
+  }
+
+  tabs.addEventListener("keydown", (e) => {
+    const currentIndex = tabButtons.findIndex((b) => b.getAttribute("aria-selected") === "true");
+    if (e.key === "ArrowRight") {
+      e.preventDefault();
+      setActive(currentIndex + 1, true);
+    } else if (e.key === "ArrowLeft") {
+      e.preventDefault();
+      setActive(currentIndex - 1, true);
+    } else if (e.key === "Home") {
+      e.preventDefault();
+      setActive(0, true);
+    } else if (e.key === "End") {
+      e.preventDefault();
+      setActive(assignments.length - 1, true);
+    }
   });
+
+  setActive(0, false);
 }
 
 function setupNav() {
@@ -80,32 +140,12 @@ function setupNav() {
   });
 }
 
-function setupContactForm() {
-  const form = document.getElementById("contactForm");
-  if (!(form instanceof HTMLFormElement)) return;
-
-  form.addEventListener("submit", (e) => {
-    e.preventDefault();
-
-    const fd = new FormData(form);
-    const name = String(fd.get("name") ?? "");
-    const email = String(fd.get("email") ?? "");
-    const message = String(fd.get("message") ?? "");
-
-    const subject = encodeURIComponent(`Portfolio message from ${name}`);
-    const body = encodeURIComponent(`From: ${name} <${email}>\n\n${message}`);
-
-    window.location.href = `mailto:you@example.com?subject=${subject}&body=${body}`;
-  });
-}
-
 function setupYear() {
   const year = document.getElementById("year");
   if (year) year.textContent = String(new Date().getFullYear());
 }
 
-renderProjects();
+renderAssignmentTabs();
 setupNav();
-setupContactForm();
 setupYear();
 

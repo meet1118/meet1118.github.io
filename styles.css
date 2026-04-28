@@ -440,6 +440,48 @@ h1 {
   background: rgba(255, 255, 255, 0.08);
 }
 
+.tabs {
+  display: flex;
+  flex-wrap: wrap;
+  gap: 10px;
+  margin-top: 10px;
+  margin-bottom: 14px;
+}
+
+.tab {
+  appearance: none;
+  border: 1px solid rgba(255, 255, 255, 0.14);
+  background: rgba(0, 0, 0, 0.18);
+  color: rgba(255, 255, 255, 0.82);
+  border-radius: 999px;
+  padding: 10px 12px;
+  font: inherit;
+  font-weight: 700;
+  cursor: pointer;
+  min-width: 56px;
+  text-align: center;
+}
+
+.tab:hover {
+  background: rgba(255, 255, 255, 0.08);
+}
+
+.tab:focus-visible {
+  outline: 3px solid var(--ring);
+  outline-offset: 2px;
+}
+
+.tab.is-active {
+  border-color: rgba(139, 92, 246, 0.55);
+  background: linear-gradient(135deg, rgba(139, 92, 246, 0.95), rgba(34, 197, 94, 0.35));
+  color: #0b1020;
+}
+
+.tabpanel {
+  display: grid;
+  gap: 10px;
+}
+
 .skills {
   display: grid;
   grid-template-columns: repeat(3, 1fr);

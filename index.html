@@ -24,9 +24,7 @@
 
         <div class="nav__links" id="navLinks">
           <a href="#assignments">Assignments</a>
-          <a href="#skills">Skills</a>
           <a href="#about">About</a>
-          <a href="#contact">Contact</a>
         </div>
       </nav>
     </header>
@@ -41,13 +39,7 @@
 
             <div class="hero__cta">
               <a class="button primary" href="#assignments">View assignments</a>
-              <a class="button" href="#contact">Contact</a>
             </div>
-
-            <ul class="hero__meta" aria-label="Quick links">
-              <li><a href="https://github.com/meet1118" target="_blank" rel="noreferrer">GitHub</a></li>
-              <li><a href="mailto:you@example.com">you@example.com</a></li>
-            </ul>
           </div>
 
           <div class="hero__card" aria-label="Profile card">
@@ -75,41 +67,8 @@
             <p class="muted">COM354 assignment submissions (1–9).</p>
           </div>
 
-          <div class="grid" id="projectsGrid" aria-live="polite"></div>
-        </div>
-      </section>
-
-      <section class="section" id="skills">
-        <div class="container">
-          <div class="section__head">
-            <h2>Skills</h2>
-            <p class="muted">Tools and technologies I use.</p>
-          </div>
-
-          <div class="skills">
-            <div class="panel">
-              <h3 class="h4">Frontend</h3>
-              <ul class="list">
-                <li>HTML5, CSS3, JavaScript</li>
-                <li>Responsive design</li>
-                <li>Accessibility basics (ARIA, contrast)</li>
-              </ul>
-            </div>
-            <div class="panel">
-              <h3 class="h4">Backend / Data</h3>
-              <ul class="list">
-                <li>Node.js (basic), APIs</li>
-                <li>SQL (basic)</li>
-              </ul>
-            </div>
-            <div class="panel">
-              <h3 class="h4">Workflow</h3>
-              <ul class="list">
-                <li>Git + GitHub</li>
-                <li>Debugging, documentation</li>
-              </ul>
-            </div>
-          </div>
+          <div class="tabs" id="assignmentsTabs" aria-label="Assignments"></div>
+          <div class="panel tabpanel" id="assignmentPanel" aria-live="polite"></div>
         </div>
       </section>
 
@@ -126,47 +85,6 @@
               <li>9 assignments posted with links</li>
               <li>Hosted on GitHub Pages</li>
             </ul>
-          </div>
-        </div>
-      </section>
-
-      <section class="section" id="contact">
-        <div class="container">
-          <div class="section__head">
-            <h2>Contact</h2>
-            <p class="muted">Email me if you need to contact me.</p>
-          </div>
-
-          <div class="contact">
-            <div class="panel">
-              <h3 class="h4">Send a message</h3>
-              <p class="muted">This form opens your email app.</p>
-
-              <form id="contactForm">
-                <label class="field">
-                  <span>Name</span>
-                  <input name="name" autocomplete="name" required />
-                </label>
-                <label class="field">
-                  <span>Email</span>
-                  <input name="email" type="email" autocomplete="email" required />
-                </label>
-                <label class="field">
-                  <span>Message</span>
-                  <textarea name="message" rows="5" required></textarea>
-                </label>
-
-                <button class="button primary" type="submit">Email me</button>
-              </form>
-            </div>
-
-            <div class="panel">
-              <h3 class="h4">Links</h3>
-              <ul class="list">
-                <li><a href="mailto:you@example.com">you@example.com</a></li>
-                <li><a href="https://github.com/meet1118" target="_blank" rel="noreferrer">GitHub</a></li>
-              </ul>
-            </div>
           </div>
         </div>
       </section>
