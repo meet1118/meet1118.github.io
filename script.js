@@ -4,10 +4,21 @@ const assignments = Array.from({ length: 9 }, (_, i) => {
     title: `Assignment ${n}`,
     description: "Add a short description of what you did for this assignment.",
     tags: ["COM354"],
+    imageUrl: "",
     liveUrl: "",
     repoUrl: "",
   };
 });
+
+assignments[0] = {
+  title: "Assignment 1",
+  description:
+    "This scene is meaningful to me because it shows the different parts of my life coming together in one place. The desk, computer, and circuit diagram represent my passion for electrical engineering and my personality as someone who enjoys working hard, thinking logically, and solving problems. The mountains represent calmness and balance, reminding me to stay grounded and motivated. The road and vehicle represent my personal journey, including the move from India to America in 2013, which shaped who I am today and pushed me to grow and adapt. Overall, this drawing represents my interests, background, and goals, and it shows how my past and present connect to who I am becoming.",
+  tags: ["COM354"],
+  imageUrl: "./assets/assignment-1.png",
+  liveUrl: "",
+  repoUrl: "",
+};
 
 function el(tag, attrs = {}, children = []) {
   const node = document.createElement(tag);
@@ -73,7 +84,16 @@ function renderAssignmentTabs() {
       (a.tags ?? []).map((t) => el("span", { className: "tag", text: t }))
     );
 
-    const desc = el("p", { className: "card__desc", text: a.description });
+    const media = a.imageUrl
+      ? el("img", {
+          className: "assignment__image",
+          src: a.imageUrl,
+          alt: `${a.title} image`,
+          loading: "lazy",
+        })
+      : null;
+
+    const desc = el("p", { className: "card__desc assignment__text", text: a.description });
 
     const links = el("div", { className: "card__links" });
     if (a.liveUrl) {
@@ -86,7 +106,11 @@ function renderAssignmentTabs() {
       links.append(el("span", { className: "muted", text: "Links coming soon." }));
     }
 
-    panelInner.replaceChildren(heading, tagRow, desc, links);
+    const children = [heading, tagRow];
+    if (media) children.push(media);
+    children.push(desc, links);
+
+    panelInner.replaceChildren(...children);
     panel.setAttribute("aria-labelledby", tabButtons[safeIndex].id);
     panel.id = `panel-assignment-${safeIndex + 1}`;
 
