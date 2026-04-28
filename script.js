@@ -70,6 +70,18 @@ assignments[3] = {
       caption:
         "Composition Techniques: Rule of Thirds, Negative space\n\nThe mountains are placed along the lower third while the large sky creates negative space that emphasizes the landscape.",
     },
+    {
+      src: "./assets/assignment-4-4.png",
+      alt: "Rocky shoreline photo",
+      caption:
+        "Composition Techniques: Patterns, Leading Lines, Rule of Thirds\n\nThe repeated rocks create patterns while the shoreline forms leading lines that guide the viewer toward the horizon.",
+    },
+    {
+      src: "./assets/assignment-4-5.png",
+      alt: "Mountain valley road photo",
+      caption:
+        "Composition Techniques: Leading Lines, S-Curve, Rule of Thirds, Layering\n\nThe curved road forms an S-curve that leads the viewer’s eye through the valley toward the mountains.",
+    },
   ],
   imageUrl: "",
   liveUrl: "",
