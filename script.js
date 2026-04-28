@@ -1,36 +1,13 @@
-const projects = [
-  {
-    title: "Project One",
-    description:
-      "Short description of what it does, what you learned, and what makes it interesting. Keep it to 1–2 sentences.",
-    tags: ["HTML", "CSS", "JS"],
-    liveUrl: "https://example.com",
-    repoUrl: "https://github.com/your-username/project-one",
-  },
-  {
-    title: "Project Two",
-    description:
-      "Another project. If you don’t have a live link, you can remove it and keep only the repo link.",
-    tags: ["Class", "Web"],
-    liveUrl: "",
-    repoUrl: "https://github.com/your-username/project-two",
-  },
-  {
-    title: "Project Three",
-    description:
-      "Add a third one. You can also add screenshots later if you want and I’ll style them.",
-    tags: ["API", "Node"],
-    liveUrl: "",
-    repoUrl: "https://github.com/your-username/project-three",
-  },
-  {
-    title: "Project Four",
-    description: "Last placeholder project card. Replace with your best work.",
-    tags: ["Design", "UX"],
+const assignments = Array.from({ length: 9 }, (_, i) => {
+  const n = i + 1;
+  return {
+    title: `Assignment ${n}`,
+    description: "Add a short description of what you did for this assignment.",
+    tags: ["COM354"],
     liveUrl: "",
     repoUrl: "",
-  },
-];
+  };
+});
 
 function el(tag, attrs = {}, children = []) {
   const node = document.createElement(tag);
@@ -50,7 +27,7 @@ function renderProjects() {
 
   grid.replaceChildren();
 
-  projects.forEach((p) => {
+  assignments.forEach((p) => {
     const title = el("h3", { text: p.title });
 
     const tagRow = el(

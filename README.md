@@ -1,6 +1,6 @@
-# Portfolio Website (GitHub Pages)
+# COM354 Portfolio (GitHub Pages)
 
-This is a simple, fast portfolio site built with **HTML/CSS/JavaScript**.
+This is a simple website for **Meet Patel’s COM354 assignments**.
 
 ## Customize it
 
@@ -11,7 +11,7 @@ Open `index.html` and replace:
 - GitHub + LinkedIn links
 - The “About” text
 
-Open `script.js` and replace the `projects` list with your real projects.
+Open `script.js` and update the 9 assignment cards (titles, descriptions, and links).
 
 Optional:
 
@@ -25,7 +25,7 @@ Easiest option:
 
 ## Publish on GitHub Pages
 
-1. Create a new GitHub repository (example: `portfolio`).
+1. Create a GitHub repository (example: `meet1118.github.io`).
 2. Add these files to the repo (at the repo root):
    - `index.html`
    - `styles.css`
