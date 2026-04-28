@@ -33,6 +33,17 @@ assignments[1] = {
   repoUrl: "",
 };
 
+assignments[2] = {
+  title: "Audio Project",
+  tabLabel: "Audio Project",
+  description:
+    "This project involved recording and editing an audio clip under two minutes long. I used audio editing tools to enhance the recording with sound effects and sound bites, focusing on improving the listener’s experience and understanding audio storytelling techniques.",
+  tags: ["COM354"],
+  imageUrl: "",
+  liveUrl: "",
+  repoUrl: "",
+};
+
 function el(tag, attrs = {}, children = []) {
   const node = document.createElement(tag);
   Object.entries(attrs).forEach(([key, value]) => {
