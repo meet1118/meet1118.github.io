@@ -2,6 +2,7 @@ const assignments = Array.from({ length: 9 }, (_, i) => {
   const n = i + 1;
   return {
     title: `Assignment ${n}`,
+    tabLabel: `Assignment ${n}`,
     description: "Add a short description of what you did for this assignment.",
     tags: ["COM354"],
     imageUrl: "",
@@ -11,11 +12,23 @@ const assignments = Array.from({ length: 9 }, (_, i) => {
 });
 
 assignments[0] = {
-  title: "Assignment 1",
+  title: "Drawing Project",
+  tabLabel: "Drawing Project",
   description:
     "This scene is meaningful to me because it shows the different parts of my life coming together in one place. The desk, computer, and circuit diagram represent my passion for electrical engineering and my personality as someone who enjoys working hard, thinking logically, and solving problems. The mountains represent calmness and balance, reminding me to stay grounded and motivated. The road and vehicle represent my personal journey, including the move from India to America in 2013, which shaped who I am today and pushed me to grow and adapt. Overall, this drawing represents my interests, background, and goals, and it shows how my past and present connect to who I am becoming.",
   tags: ["COM354"],
   imageUrl: "./assets/assignment-1.png",
+  liveUrl: "",
+  repoUrl: "",
+};
+
+assignments[1] = {
+  title: "Course Website",
+  tabLabel: "Course Website",
+  description:
+    "For this assignment, I created my personal course website to host all my work throughout the semester. This site serves as a central portfolio where I organized and displayed each assignment in a clean and structured way.",
+  tags: ["COM354"],
+  imageUrl: "",
   liveUrl: "",
   repoUrl: "",
 };
@@ -51,7 +64,7 @@ function renderAssignmentTabs() {
       "aria-selected": "false",
       "aria-controls": `panel-assignment-${idx + 1}`,
       tabindex: "-1",
-      text: `Assignment ${idx + 1}`,
+      text: a.tabLabel ?? `Assignment ${idx + 1}`,
     });
 
     btn.addEventListener("click", () => setActive(idx, true));
