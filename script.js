@@ -5,6 +5,7 @@ const assignments = Array.from({ length: 9 }, (_, i) => {
     tabLabel: `Assignment ${n}`,
     description: "Add a short description of what you did for this assignment.",
     tags: ["COM354"],
+    gallery: [],
     imageUrl: "",
     liveUrl: "",
     repoUrl: "",
@@ -39,6 +40,18 @@ assignments[2] = {
   description:
     "This project involved recording and editing an audio clip under two minutes long. I used audio editing tools to enhance the recording with sound effects and sound bites, focusing on improving the listener’s experience and understanding audio storytelling techniques.",
   tags: ["COM354"],
+  gallery: [],
+  imageUrl: "",
+  liveUrl: "",
+  repoUrl: "",
+};
+
+assignments[3] = {
+  title: "Photo Project",
+  tabLabel: "Photo Project",
+  description: "Photos and captions will be added here.",
+  tags: ["COM354"],
+  gallery: [],
   imageUrl: "",
   liveUrl: "",
   repoUrl: "",
@@ -119,6 +132,24 @@ function renderAssignmentTabs() {
 
     const desc = el("p", { className: "card__desc assignment__text", text: a.description });
 
+    const gallery =
+      Array.isArray(a.gallery) && a.gallery.length > 0
+        ? el(
+            "div",
+            { className: "gallery", "aria-label": `${a.title} gallery` },
+            a.gallery.map((item, i) => {
+              const img = el("img", {
+                className: "gallery__image",
+                src: item.src,
+                alt: item.alt ?? `${a.title} photo ${i + 1}`,
+                loading: "lazy",
+              });
+              const caption = el("p", { className: "gallery__caption", text: item.caption ?? "" });
+              return el("figure", { className: "gallery__item" }, [img, caption]);
+            })
+          )
+        : null;
+
     const links = el("div", { className: "card__links" });
     if (a.liveUrl) {
       links.append(el("a", { href: a.liveUrl, target: "_blank", rel: "noreferrer", text: "Open" }));
@@ -132,6 +163,7 @@ function renderAssignmentTabs() {
 
     const children = [heading, tagRow];
     if (media) children.push(media);
+    if (gallery) children.push(gallery);
     children.push(desc, links);
 
     panelInner.replaceChildren(...children);
