@@ -40,7 +40,7 @@ function renderAssignmentTabs() {
       "aria-selected": "false",
       "aria-controls": `panel-assignment-${idx + 1}`,
       tabindex: "-1",
-      text: `A${idx + 1}`,
+      text: `Assignment ${idx + 1}`,
     });
 
     btn.addEventListener("click", () => setActive(idx, true));
