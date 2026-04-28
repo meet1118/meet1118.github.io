@@ -58,6 +58,12 @@ assignments[3] = {
       caption:
         "Composition Techniques: Rule of Thirds, Leading Lines, Negative Space, Layering\n\nThe shoreline and horizon follow the rule of thirds while the open sky creates negative space and the landscape layers add depth.",
     },
+    {
+      src: "./assets/assignment-4-2.png",
+      alt: "Beach framed by trees photo",
+      caption:
+        "Composition Techniques: Frame in a Frame, Leading Lines, Layering, Multiple Points of Interest\n\nThe surrounding trees create a natural frame while the stairs lead the viewer’s eye toward the beach and ocean.",
+    },
   ],
   imageUrl: "",
   liveUrl: "",
