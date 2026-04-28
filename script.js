@@ -64,6 +64,12 @@ assignments[3] = {
       caption:
         "Composition Techniques: Frame in a Frame, Leading Lines, Layering, Multiple Points of Interest\n\nThe surrounding trees create a natural frame while the stairs lead the viewer’s eye toward the beach and ocean.",
     },
+    {
+      src: "./assets/assignment-4-3.png",
+      alt: "Mountains and lake photo",
+      caption:
+        "Composition Techniques: Rule of Thirds, Negative space\n\nThe mountains are placed along the lower third while the large sky creates negative space that emphasizes the landscape.",
+    },
   ],
   imageUrl: "",
   liveUrl: "",
