@@ -51,7 +51,14 @@ assignments[3] = {
   tabLabel: "Photo Project",
   description: "Photos and captions will be added here.",
   tags: ["COM354"],
-  gallery: [],
+  gallery: [
+    {
+      src: "./assets/assignment-4-1.png",
+      alt: "Sunset shoreline photo",
+      caption:
+        "Composition Techniques: Rule of Thirds, Leading Lines, Negative Space, Layering\n\nThe shoreline and horizon follow the rule of thirds while the open sky creates negative space and the landscape layers add depth.",
+    },
+  ],
   imageUrl: "",
   liveUrl: "",
   repoUrl: "",
