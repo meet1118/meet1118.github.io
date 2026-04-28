@@ -49,7 +49,7 @@ assignments[2] = {
 assignments[3] = {
   title: "Photo Project",
   tabLabel: "Photo Project",
-  description: "Photos and captions will be added here.",
+  description: "",
   tags: ["COM354"],
   gallery: [
     {
@@ -161,7 +161,10 @@ function renderAssignmentTabs() {
         })
       : null;
 
-    const desc = el("p", { className: "card__desc assignment__text", text: a.description });
+    const desc =
+      a.description && a.description.trim().length > 0
+        ? el("p", { className: "card__desc assignment__text", text: a.description })
+        : null;
 
     const gallery =
       Array.isArray(a.gallery) && a.gallery.length > 0
@@ -181,21 +184,25 @@ function renderAssignmentTabs() {
           )
         : null;
 
-    const links = el("div", { className: "card__links" });
-    if (a.liveUrl) {
-      links.append(el("a", { href: a.liveUrl, target: "_blank", rel: "noreferrer", text: "Open" }));
-    }
-    if (a.repoUrl) {
-      links.append(el("a", { href: a.repoUrl, target: "_blank", rel: "noreferrer", text: "Code" }));
-    }
-    if (!a.liveUrl && !a.repoUrl) {
-      links.append(el("span", { className: "muted", text: "Links coming soon." }));
-    }
+    const links =
+      a.liveUrl || a.repoUrl
+        ? (() => {
+            const node = el("div", { className: "card__links" });
+            if (a.liveUrl) {
+              node.append(el("a", { href: a.liveUrl, target: "_blank", rel: "noreferrer", text: "Open" }));
+            }
+            if (a.repoUrl) {
+              node.append(el("a", { href: a.repoUrl, target: "_blank", rel: "noreferrer", text: "Code" }));
+            }
+            return node;
+          })()
+        : null;
 
     const children = [heading, tagRow];
     if (media) children.push(media);
     if (gallery) children.push(gallery);
-    children.push(desc, links);
+    if (desc) children.push(desc);
+    if (links) children.push(links);
 
     panelInner.replaceChildren(...children);
     panel.setAttribute("aria-labelledby", tabButtons[safeIndex].id);
