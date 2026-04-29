@@ -494,6 +494,7 @@ h1 {
 .assignment__text {
   font-size: 1rem;
   line-height: 1.75;
+  white-space: pre-line;
 }
 
 .assignment__video {

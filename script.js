@@ -103,6 +103,20 @@ assignments[4] = {
   repoUrl: "",
 };
 
+assignments[5] = {
+  title: "Online Journalist",
+  tabLabel: "Online Journalist",
+  description:
+    "On Monday night since January students in NJIT’s COM 354: Designing Digital Media weren’t just attending class because they had to. They were actively building their class portfolios from editing videos and producing digital content as they learned. Over the Spring 2026 semester, the course, taught by Professor Kevin McIntosh, focused on hands-on learning and practical skills in modern media. Rather than relying on exams, students created a series of projects that developed their ability to communicate through digital platforms.\n\nThe semester started with a drawing assignment that asked students to visually represent themselves. While simple at first, the course quickly shifted into more technical work, including building a personal website to host all assignments. “Once I started working on the assignments it became easier for me, as I am someone who learns better hands on.” said Colin, a student in the class.\n\nAs the course progressed, students worked on audio, photography, and video projects. The audio assignment required recording and editing sound clips, while the photo project focused on improving composition. The video project challenged students to create short instructional videos using editing techniques like transitions and text overlays.\n\n“I’ve never edited a video before this class,” said Landon. “Now I see how much work actually goes into all the artistic content I see online.”\n\nOne of the biggest assignments was the Podcast Promotion Project, where students worked in teams to simulate a real production environment. Groups created and promoted podcast-style content, taking on roles such as hosts and editors.\n\nBy the end of the semester, students had developed a full range of digital media skills and created a portfolio of work hosted on their websites. The course concluded with assignments focused on journalism and promoting their final projects.",
+  tags: ["COM354"],
+  gallery: [],
+  imageUrl: "",
+  videoUrl: "",
+  videoEmbedUrl: "",
+  liveUrl: "",
+  repoUrl: "",
+};
+
 function el(tag, attrs = {}, children = []) {
   const node = document.createElement(tag);
   Object.entries(attrs).forEach(([key, value]) => {
