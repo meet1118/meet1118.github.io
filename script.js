@@ -117,6 +117,19 @@ assignments[5] = {
   repoUrl: "",
 };
 
+assignments[6] = {
+  title: "Podcast Promotion Project",
+  tabLabel: "Podcast Promotion Project",
+  description: "",
+  tags: ["COM354"],
+  gallery: [],
+  imageUrl: "",
+  videoUrl: "",
+  videoEmbedUrl: "https://drive.google.com/file/d/1En4ESQve3B2Vc34-GJdTxTPeYBXPlXMc/preview",
+  liveUrl: "",
+  repoUrl: "",
+};
+
 function el(tag, attrs = {}, children = []) {
   const node = document.createElement(tag);
   Object.entries(attrs).forEach(([key, value]) => {
