@@ -7,6 +7,8 @@ const assignments = Array.from({ length: 9 }, (_, i) => {
     tags: ["COM354"],
     gallery: [],
     imageUrl: "",
+    videoUrl: "",
+    videoEmbedUrl: "",
     liveUrl: "",
     repoUrl: "",
   };
@@ -88,6 +90,19 @@ assignments[3] = {
   repoUrl: "",
 };
 
+assignments[4] = {
+  title: "Video Project",
+  tabLabel: "Video Project",
+  description: "",
+  tags: ["COM354"],
+  gallery: [],
+  imageUrl: "",
+  videoUrl: "",
+  videoEmbedUrl: "https://drive.google.com/file/d/1IOrNOfhpH7AEeoD9d7I4mxF2fRjlcKEw/preview",
+  liveUrl: "",
+  repoUrl: "",
+};
+
 function el(tag, attrs = {}, children = []) {
   const node = document.createElement(tag);
   Object.entries(attrs).forEach(([key, value]) => {
@@ -161,6 +176,33 @@ function renderAssignmentTabs() {
         })
       : null;
 
+    const video =
+      a.videoUrl && a.videoUrl.trim().length > 0
+        ? el(
+            "video",
+            {
+              className: "assignment__video",
+              controls: "true",
+              preload: "metadata",
+            },
+            [el("source", { src: a.videoUrl, type: "video/mp4" })]
+          )
+        : null;
+
+    const videoEmbed =
+      a.videoEmbedUrl && a.videoEmbedUrl.trim().length > 0
+        ? el("div", { className: "videoEmbed" }, [
+            el("iframe", {
+              className: "videoEmbed__frame",
+              src: a.videoEmbedUrl,
+              title: `${a.title} video`,
+              allow: "autoplay; encrypted-media; picture-in-picture",
+              allowfullscreen: "true",
+              referrerpolicy: "no-referrer",
+            }),
+          ])
+        : null;
+
     const desc =
       a.description && a.description.trim().length > 0
         ? el("p", { className: "card__desc assignment__text", text: a.description })
@@ -200,6 +242,8 @@ function renderAssignmentTabs() {
 
     const children = [heading, tagRow];
     if (media) children.push(media);
+    if (video) children.push(video);
+    if (videoEmbed) children.push(videoEmbed);
     if (gallery) children.push(gallery);
     if (desc) children.push(desc);
     if (links) children.push(links);
